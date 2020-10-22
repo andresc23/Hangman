@@ -7,16 +7,17 @@ import os
 # For using sleep function
 import time
 
+#For hiding user input
+import getpass
 
 
 print("Welcome to Hangman in Python by Andres Cisneros")
 
-answer_var = input("Please type in a word to have other people guess.\n")
+answer_var = getpass.getpass("Please type in a word to have other people guess.\n")
 
 while(not answer_var.isalpha()):
-    answer_var = input("Please only type in letters for your word.\n")
+    answer_var = getpass.getpass("Please only type in letters for your word.\n")
 
-print("Your word is:", answer_var)
 
 # For keeping track and displaying player's progress.
 progress_var = "_" * len(answer_var)
@@ -77,7 +78,7 @@ while chances != 0:
                 print("You have guessed incorrectly.\n")
                 chances = chances - 1
     if(chances == 0):
-        print("You are out of chances. Game Over!")
+        print("The answer was:", answer_var, "\nYou are out of chances. Game Over!")
         break
 
     if(progress_var == answer_var):
